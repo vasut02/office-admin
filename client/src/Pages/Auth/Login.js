@@ -47,7 +47,7 @@ export default function Login(props) {
 
     await axios.post(`/auth/login`, formData).then((res) => {
       console.log(res.data);
-      props.history.push('/scanner')
+      props.history.push('/admin')
     }).catch((err) => {
       console.log(err.response);
 

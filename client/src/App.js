@@ -1,20 +1,17 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import routes from "Routes";
+import RouteWithSubRoutes from 'RouteWithSubRoutes';
 
-// ~ IMPORT COMPONENTS
-import Scanner from "Pages/Scanner";
-import Login from 'Pages/Auth/Login';
-import NavBar from 'Components/Navbar';
 
 function App() {
   return (
     <Router>
       <div>
-        <NavBar />
         <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/scanner" component={Scanner} />
-          <Redirect path="/" to="login" />
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
         </Switch>
       </div>
     </Router>
